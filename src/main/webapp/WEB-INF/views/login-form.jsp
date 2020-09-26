@@ -3,37 +3,20 @@
 <%@taglib uri="http://www.springframework.org/tags/form"
 	prefix="spring-form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Signin Template for Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
-
-<!-- Bootstrap core CSS -->
-<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="signin.css" rel="stylesheet">
-
-<meta charset="ISO-8859-1">
-<title>Custom Login Page</title>
-
-<style>
-.failed {
-	color: red;
-}
-</style>
-</head>
-<body class="text-center">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container mt-5 text-center">
 	<core:if test="${param.error != null}">
 		<i class="failed">Invalid Credentials!!!</i>
 	</core:if>
@@ -42,21 +25,32 @@
 		method="POST">
 
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-		<br />
-		<br />
+		<div class="form-group">
 		<label class="sr-only">Enter user name</label>
 		<input type="text" name="username" />
-		<br />
-		<br />
+		</div>
+		<div class="form-group">
 		<label class="sr-only">Enter password</label>
 		<input type="password" name="password" />
-		<br />
-		<br />
+		</div>
+		<div class="form-group">
 		<input type="submit" value="Login" />
+		</div>
 	</spring-form:form>
+	
 	<core:if test="${param.logout != null}">
 		<i>You have been logged out successfully!!!</i>
 	</core:if>
 
+</div>
 
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

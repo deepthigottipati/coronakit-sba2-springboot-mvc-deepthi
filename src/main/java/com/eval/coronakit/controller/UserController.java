@@ -2,6 +2,8 @@ package com.eval.coronakit.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,18 +56,20 @@ public class UserController {
 	}
 
 	@RequestMapping("/add-to-cart/{productId}")
-	public String showKit(@PathVariable("productId") int productId) throws CoronaException {
+	public String showKit(@PathVariable("productId") int productId,HttpServletRequest request) throws CoronaException {
 
 		ModelAndView mv = new ModelAndView();
 
 		KitDetail kit = new KitDetail();
 		ProductMaster theProduct = productService.getProductById(productId);
 
+		System.out.println("quantity="+request.getParameter("quantity"));
+		
 		kit.setId(theProduct.getId());
 		kit.setAmount(theProduct.getCost());
 		kit.setCoronaKitId(1);
 		kit.setProductId(theProduct.getId());
-		kit.setQuantity(1);
+		kit.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 
 		kitDetailService.addKitItem(kit);
 
