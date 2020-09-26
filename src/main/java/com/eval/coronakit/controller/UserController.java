@@ -56,20 +56,20 @@ public class UserController {
 	}
 
 	@RequestMapping("/add-to-cart/{productId}")
-	public String showKit(@PathVariable("productId") int productId,HttpServletRequest request) throws CoronaException {
+	public String showKit(@PathVariable("productId") int productId) throws CoronaException {
 
 		ModelAndView mv = new ModelAndView();
 
 		KitDetail kit = new KitDetail();
 		ProductMaster theProduct = productService.getProductById(productId);
 
-		System.out.println("quantity="+request.getParameter("quantity"));
+		//System.out.println("quantity="+	quantity);
 		
 		kit.setId(theProduct.getId());
 		kit.setAmount(theProduct.getCost());
 		kit.setCoronaKitId(1);
 		kit.setProductId(theProduct.getId());
-		kit.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		kit.setQuantity(1);
 
 		kitDetailService.addKitItem(kit);
 

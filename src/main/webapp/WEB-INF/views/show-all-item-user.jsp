@@ -29,11 +29,7 @@
 </head>
 <body>
 
-<%
 
-session.setAttribute("quantity",quantity);	
-
-%>
 	<jsp:include page="userheader.jsp" />
 	<section class="container-fluid p-4">
 		<h3>Products</h3>
@@ -62,7 +58,7 @@ session.setAttribute("quantity",quantity);
 							<td>${product.cost }</td>
 							<td>${product.productDescription }</td>
 							
-							<td><input type="number" name="quantity"/></td>
+							<td><input id='quantity' type="number" name="quantity"/></td>
 							
 							<td><a class="btn btn-sm btn-danger"
 								href="add-to-cart/${product.id}">ADD TO CART</a>
