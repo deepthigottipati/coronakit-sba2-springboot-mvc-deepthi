@@ -21,7 +21,7 @@ public class CoronaKit {
 	private String orderDate;
 	
 	@Column(name="total_amount")
-	private int totalAmount;
+	private double totalAmount;
 	
 	
 	public CoronaKit() {
@@ -54,11 +54,11 @@ public class CoronaKit {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getTotalAmount() {
+	public double getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(int totalAmount) {
-		this.totalAmount = totalAmount;
+	public void setTotalAmount(double totalamount2) {
+		this.totalAmount = totalamount2;
 	}
 
 }

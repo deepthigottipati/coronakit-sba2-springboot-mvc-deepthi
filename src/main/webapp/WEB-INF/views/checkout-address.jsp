@@ -32,9 +32,9 @@
 	<jsp:include page="userheader.jsp" />
 
 	<section class="container-fluid p-4">
-		<h3>Enter Address and Confirm the Order</h3>
+		<h3>Enter Address and Submit the Order</h3>
 		<div class="col-4">
-			<form:form class="form" action="checkout" method="POST">
+			<form:form class="form" action="checkout" method="POST" modelAttribute="coronakit">
 				<div class="form-group">
 					<form:label path="id" class="form-lable">id: </form:label>
 					<form:input type="number" path="id" class="form-control" />
@@ -47,19 +47,20 @@
 				</div>
 
 				<div class="form-group">
-					<form:label path="orderDate">Cost: </form:label>
+					<form:label path="orderDate">Order Date: </form:label>
 					<form:input type="date" path="orderDate" class="form-control" />
 					<form:errors path="orderDate" class="alert alert-danger" />
 				</div>
 
 				<div class="form-group">
-					<form:label path="totalAmount">Product Description:</form:label>
-					<form:input type="text" path="totalAmount" class="form-control" />
+					<form:label path="totalAmount">Total Amount:</form:label>
+					<form:input type="text" value="${totalamount}" path="totalAmount" class="form-control" />
 					<form:errors path="totalAmount" class="alert alert-danger" />
 				</div>
 
 				<div class="text-right">
-					<button class="btn btn-primary">Finalize</button>
+					<button class="btn btn-primary">Submit</button>
+					
 				</div>
 			</form:form>
 		</div>
