@@ -10,4 +10,5 @@ public interface KitDetailService {
 	public KitDetail getKitItemById(int itemId) throws CoronaException;
 	public List<KitDetail> getAllKitItemsOfAKit();
 	String deleteKitItem(int itemId) throws CoronaException;
+	//KitDetail updateKitItem(KitDetail kitItem) throws CoronaException;
 }

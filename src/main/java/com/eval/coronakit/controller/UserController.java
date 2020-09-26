@@ -58,21 +58,55 @@ public class UserController {
 	@RequestMapping("/add-to-cart/{productId}")
 	public String showKit(@PathVariable("productId") int productId) throws CoronaException {
 
-		ModelAndView mv = new ModelAndView();
-
-		KitDetail kit = new KitDetail();
+		ModelAndView mv=null;
+		int kitid = 0;
+		KitDetail kit;
+		boolean newkit = true;
+		
 		ProductMaster theProduct = productService.getProductById(productId);
 
-		//System.out.println("quantity="+	quantity);
+		List<KitDetail> kitlist = kitDetailService.getAllKitItemsOfAKit();
+		System.out.println("kitlist size="+kitlist.size());
 		
-		kit.setId(theProduct.getId());
+		if(kitlist.size()>0)
+		{
+		for (KitDetail eachkit : kitlist) {
+
+			if(eachkit.getProductId()==productId)
+			{
+				kitid=eachkit.getId();
+				System.out.println("kitid="+kitid);
+				newkit=false;
+				break;
+			}
+			else
+				newkit=true;
+				
+		}
+	}
+		if(newkit==true)
+		{
+		 kit = new KitDetail();
+		
 		kit.setAmount(theProduct.getCost());
 		kit.setCoronaKitId(1);
 		kit.setProductId(theProduct.getId());
 		kit.setQuantity(1);
-
+		
 		kitDetailService.addKitItem(kit);
+		mv =new ModelAndView("show-all-item-user","msg","Item Added to cart!");
 
+		}
+		else if(newkit==false)
+		{
+			kit = kitDetailService.getKitItemById(kitid);
+			kit.setQuantity(kit.getQuantity()+1);
+			kit.setAmount(kit.getAmount()+theProduct.getCost());
+			kitDetailService.addKitItem(kit);
+			mv =new ModelAndView("show-all-item-user","msg","Item Added to cart!");
+		}
+		
+		
 		return "redirect:/user/show-list";
 	}
 
@@ -137,14 +171,25 @@ public class UserController {
 	@RequestMapping("/delete/{itemId}")
 	public String deleteItem(@PathVariable("itemId") int itemId) throws CoronaException {
 
-		String tempProduct = kitDetailService.deleteKitItem(itemId);
+		KitDetail kit = kitDetailService.getKitItemById(itemId);
 
-		// throw exception if null
+		
+		if(kit.getQuantity()>=1)
+		{
+			int quantity=kit.getQuantity();
+			kit.setQuantity(kit.getQuantity()-1);
+			kit.setAmount(kit.getAmount()-(kit.getAmount()/quantity));
+			kitDetailService.addKitItem(kit);
+		}
+		else if(kit.getQuantity()==1)
+		{
+		String tempProduct = kitDetailService.deleteKitItem(itemId);
+		
 
 		if (tempProduct == null) {
 			throw new CoronaException("Product id not found - " + itemId);
 		}
-
+	}
 		return "redirect:/user/show-kit";
 
 	}

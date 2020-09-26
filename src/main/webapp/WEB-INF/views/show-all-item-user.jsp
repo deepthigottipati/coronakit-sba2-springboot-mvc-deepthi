@@ -47,8 +47,8 @@
 						<th>Product Name</th>
 						<th>Product Cost</th>
 						<th>Product Desc</th>
-						<th>Quantity</th>
-
+<!-- 						<th>Quantity</th>
+ -->
 					</tr>
 					<c:forEach items="${products }" var="product">
 
@@ -58,8 +58,8 @@
 							<td>${product.cost }</td>
 							<td>${product.productDescription }</td>
 							
-							<td><input id='quantity' type="number" name="quantity"/></td>
-							
+<!-- 							<td><input id='quantity' type="number" name="quantity"/></td>
+ -->							
 							<td><a class="btn btn-sm btn-danger"
 								href="add-to-cart/${product.id}">ADD TO CART</a>
 								</td>

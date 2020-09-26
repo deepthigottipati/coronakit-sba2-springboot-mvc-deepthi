@@ -65,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
 		if (result.isPresent()) {
 			theproduct = result.get();
 		} else {
-			throw new CoronaException("Did not find employee id - " + productId);
+			throw new CoronaException("Did not find product id - " + productId);
 		}
 
 		return theproduct;

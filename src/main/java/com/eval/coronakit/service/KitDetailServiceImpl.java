@@ -22,16 +22,19 @@ public class KitDetailServiceImpl implements KitDetailService {
 	@Override
 	@Transactional
 	public KitDetail addKitItem(KitDetail kitItem) throws CoronaException {
+		
 		if(kitItem!=null) {
-			if(repository.existsById(kitItem.getId())) {
-				throw new CoronaException("Item code already used!");
-			}
+			/*
+			 * if(repository.existsById(kitItem.getId())) { throw new
+			 * CoronaException("Item code already used!"); }
+			 */
 			
 			repository.save(kitItem);
 		}
 		return kitItem;
 	}
 
+	
 	@Override
 	@Transactional
 	public KitDetail getKitItemById(int itemId) throws CoronaException {
@@ -42,7 +45,7 @@ public class KitDetailServiceImpl implements KitDetailService {
 		if (result.isPresent()) {
 			thekitDetail = result.get();
 		} else {
-			throw new CoronaException("Did not find employee id - " + itemId);
+			throw new CoronaException("Did not find item id - " + itemId);
 		}
 
 		return thekitDetail;
