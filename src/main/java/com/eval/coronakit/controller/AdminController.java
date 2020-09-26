@@ -4,9 +4,12 @@ package com.eval.coronakit.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,9 +44,15 @@ public class AdminController {
 	
 	@PostMapping("/product-save")
 	
-	public String productSave(@ModelAttribute("product") ProductMaster theproduct) throws CoronaException {
+	public String productSave(@Valid @ModelAttribute ("product") ProductMaster theproduct,Errors errors,Model model) throws CoronaException {
 		
-		// save the customer using our service
+		if(errors.hasErrors())
+		{
+			//model.addAttribute("product",theproduct);
+			
+			return "add-new-item";
+		}
+		
 		productService.addNewProduct(theproduct);
 				
 				return "redirect:/admin/product-list";

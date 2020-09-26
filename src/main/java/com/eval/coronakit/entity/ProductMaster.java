@@ -20,19 +20,18 @@ public class ProductMaster {
 	private int id;
 	
 	@Column(name="product_name")
-	@NotBlank(message = "Product name can not be omitted")
+	@NotBlank()
 	@Size(min = 2,max=20,message = "Product name must not be empty and should have min 2 chars")
 	private String productName;
 	
 	
 	
 	@Column(name="cost")
-	//@NotBlank(message = "Cost can not be empty")
 	@Min(value = 10,message = "Cost Price can not be zero or negative")	
 	private Integer cost;
 	
 	@Column(name="product_description")
-	@NotBlank(message = "Product Description can not be empty")
+	@NotBlank()
 	@Size(min = 5,message = "Product Description must not be empty and should have min 5 chars")
 	private String productDescription;
 	
