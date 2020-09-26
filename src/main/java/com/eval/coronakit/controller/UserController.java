@@ -25,7 +25,7 @@ import com.eval.coronakit.service.ProductService;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("thekit")
+@SessionAttributes({"thekit","thecoronakit","products"})
 public class UserController {
 
 	@Autowired
