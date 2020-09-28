@@ -148,12 +148,12 @@ public class UserController {
 		  List<KitDetail> kit = kitDetailService.getAllKitItemsOfAKit();
 		  
 		  for (KitDetail temp : kit) { totalamount += temp.getAmount(); }
-		 
+		 System.out.println(totalamount+" Total Amount" );
 
 		model.addAttribute("id", thecoronakit.getId());
 		model.addAttribute("address", thecoronakit.getDeliveryAddress());
 		model.addAttribute("orderdate", thecoronakit.getOrderDate());
-		model.addAttribute("totalamount", thecoronakit.getTotalAmount());
+		model.addAttribute("totalamount", totalamount);
 
 		model.addAttribute("theKit", kit);
 
@@ -163,8 +163,12 @@ public class UserController {
 		coronaKit.setOrderDate(thecoronakit.getOrderDate());
 		coronaKit.setTotalAmount(totalamount);
 		
+		System.out.println(totalamount+" Total Amount" );
+		 System.out.println(thecoronakit.getTotalAmount());
+		 
+		 
 		coronaKitService.saveKit(coronaKit);
-
+		model.addAttribute("coronaKit", coronaKit);
 		return "show-summary";
 	}
 

@@ -45,6 +45,7 @@
 						<th>Product Name</th>
 						<th>Product Cost</th>
 						<th>Product Desc</th>
+						<th>Action</th>
 
 					</tr>
 					<c:forEach items="${products }" var="product">
@@ -55,7 +56,8 @@
 							<td>${product.cost }</td>
 							<td>${product.productDescription }</td>
 							<td><a class="btn btn-sm btn-danger"
-								href="product-delete/${product.id}">DELETE</a></td>
+								href="product-delete/${product.id}" onclick="if (!(confirm('Are you sure you want to delete this product?')))return false"
+								>DELETE</a></td>
 						</tr>
 					</c:forEach>
 				</table>

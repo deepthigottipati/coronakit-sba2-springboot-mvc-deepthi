@@ -35,26 +35,26 @@
 		<h3>Enter Address and Submit the Order</h3>
 		<div class="col-4">
 			<form:form class="form" action="checkout" method="POST" modelAttribute="coronakit">
-				<div class="form-group">
+				<div class="form-group" style="display: none;">
 					<form:label path="id" class="form-lable">id: </form:label>
 					<form:input type="number" path="id" class="form-control" />
 					<form:errors path="id" class="alert alert-danger" />
 				</div>
 				<div class="form-group">
 					<form:label path="deliveryAddress">Delivery Address: </form:label>
-					<form:input type="text" path="deliveryAddress" class="form-control" />
+					<form:input type="text" path="deliveryAddress" class="form-control" required="required"/>
 					<form:errors path="deliveryAddress" class="alert alert-danger" />
 				</div>
 
 				<div class="form-group">
 					<form:label path="orderDate">Order Date: </form:label>
-					<form:input type="date" path="orderDate" class="form-control" />
+					<form:input type="date" path="orderDate" class="form-control" required="required"/>
 					<form:errors path="orderDate" class="alert alert-danger" />
 				</div>
 
 				<div class="form-group">
 					<form:label path="totalAmount">Total Amount:</form:label>
-					<form:input type="text" value="${totalamount}" path="totalAmount" class="form-control" />
+					<form:input type="text" value="${totalamount}" path="totalAmount" class="form-control" disabled="true"/>
 					<form:errors path="totalAmount" class="alert alert-danger" />
 				</div>
 

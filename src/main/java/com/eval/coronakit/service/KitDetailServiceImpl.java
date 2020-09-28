@@ -73,5 +73,14 @@ public class KitDetailServiceImpl implements KitDetailService {
 		
 
 	}
+	
+	@Override
+	@Transactional
+	public void deleteAllKitItem() throws CoronaException {
+
+		repository.deleteAll();
+		
+	}
+	
 
 }

@@ -27,11 +27,11 @@
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<div class="form-group">
 		<label class="sr-only">Enter user name</label>
-		<input type="text" name="username" />
+		<input type="text" name="username" required/>
 		</div>
 		<div class="form-group">
 		<label class="sr-only">Enter password</label>
-		<input type="password" name="password" />
+		<input type="password" name="password" required/>
 		</div>
 		<div class="form-group">
 		<input type="submit" value="Login" />

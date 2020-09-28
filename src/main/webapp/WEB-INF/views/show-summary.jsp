@@ -75,13 +75,12 @@
 					<th>Total Amount</th>
 					
 				</tr>
-				
-				
+
 					<tr>
-						<td>${coronakit.id }</td>
-						<td>${coronakit.deliveryAddress }</td>
-						<td>${coronakit.orderDate }</td>
-						<td>${coronakit.totalAmount }</td>
+						<td>${coronaKit.id }</td>
+						<td>${coronaKit.deliveryAddress }</td>
+						<td>${coronaKit.orderDate }</td>
+						<td>${coronaKit.totalAmount }</td>
 						
 					</tr>
 			</table>

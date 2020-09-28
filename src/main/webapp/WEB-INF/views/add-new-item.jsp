@@ -23,26 +23,26 @@
 	<h3>Add New Product</h3>
 	<div class="col-4">	
 	<form:form class="form" action="product-save" method="POST" modelAttribute="product">
-		<div class="form-group">
+		<div class="form-group" style="display: none;" >
 			<form:label path="id" class="form-lable">id: </form:label>
 			<form:input type="number" path="id" readonly="${!isNew}" class="form-control"/>
 			<form:errors path="id" class="alert alert-danger"/>
 		</div>
 		<div class="form-group">
 			<form:label path="productName">Product name: </form:label>
-			<form:input type="text" path="productName" class="form-control"/>
+			<form:input type="text" path="productName" class="form-control" required="required"/>
 			<form:errors path="productName" class="alert alert-danger"/>
 		</div>
 		
 		<div class="form-group">
 			<form:label path="cost">Cost: </form:label>
-			<form:input type="decimal" path="cost" class="form-control"/>
+			<form:input type="decimal" path="cost" class="form-control" required="required"/>
 			<form:errors path="cost" class="alert alert-danger"/>			
 		</div>
 		
 		<div class="form-group">
 			<form:label path="productDescription">Product Description:</form:label>
-			<form:input type="text" path="productDescription" class="form-control"/>
+			<form:input type="text" path="productDescription" class="form-control" required="required"/>
 			<form:errors path="productDescription" class="alert alert-danger"/>
 		</div>
 		<div class="text-center">

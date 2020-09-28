@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,11 +47,12 @@
 						<th>Product Name</th>
 						<th>Product Cost</th>
 						<th>Product Desc</th>
+						<th>Add To Cart</th>
 <!-- 						<th>Quantity</th>
  -->
 					</tr>
 					<c:forEach items="${products }" var="product">
-
+						
 						<tr>
 							<td>${product.id }</td>
 							<td>${product.productName }</td>
@@ -61,15 +62,17 @@
 <!-- 							<td><input id='quantity' type="number" name="quantity"/></td>
  -->							
 							<td><a class="btn btn-sm btn-danger"
-								href="add-to-cart/${product.id}">ADD TO CART</a>
+								href="add-to-cart/${product.id}" id="${product.id}" 
+								   >ADD TO CART</a>
 								</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</c:otherwise>
 		</c:choose>
-</form:form>
+	</form:form>
 		
 	</section>
 </body>
 </html>
+

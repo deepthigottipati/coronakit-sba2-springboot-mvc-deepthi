@@ -35,36 +35,55 @@
 <c:choose>
 		<c:when test="${theKit==null || theKit.isEmpty() }">
 			<p>Kit is empty</p>
+			<a href="${pageContext.request.contextPath}/user/finalize">
+			<input type="button" value="Finalize" disabled="disabled"/></a>
 		</c:when>
 		<c:otherwise>
 			<table border="1" cellspacing="5px" cellpadding="5px">
 				<tr>
 					<th>kit id</th>
-					<th>carona kit id</th>
+					<th>Corona kit id</th>
 					<th>Product id</th>
 					<th>quantity</th>
 					<th>amount</th>
 					
 				</tr>
-				<c:forEach items="${theKit}" var="kit">
-				
-					<tr>
-						<td>${kit.id}</td>
-						<td>${kit.coronaKitId }</td>
-						<td>${kit.productId }</td>
-						<td>${kit.quantity }</td>
-						<td>${kit.amount }</td>
-						<td>
-						<a href="delete/${kit.id}">DELETE FORM KIT</a><span>|</span>
-						</td>
-					</tr>
+				<c:set var="count" value="0" scope="page" />
+				<c:forEach items="${theKit}" var="kit" varStatus="loop">
+					<c:choose>
+						
+						<c:when test="${kit.amount!=0}">
+							<c:set var="count" value="${count + 1}" scope="page"/>
+							<tr>
+								<td>${kit.id}</td>
+								<td>${kit.coronaKitId }</td>
+								<td>${kit.productId }</td>
+								<td>${kit.quantity }</td>
+								<td>${kit.amount }</td>
+								<td>
+								<a href="delete/${kit.id}">DELETE FORM KIT</a><span>|</span>
+								</td>
+							</tr>
+						</c:when>
+					</c:choose>
+					
 				</c:forEach>
 			</table>
+			<c:choose>
+			<c:when test="${count > 0}">
+			<a href="${pageContext.request.contextPath}/user/finalize"><input type="button" value="Finalize" /></a>
+			</c:when>
+			<c:otherwise>
+				<a href="${pageContext.request.contextPath}/user/finalize">
+			<input type="button" value="Finalize" disabled="disabled"/></a>
+			</c:otherwise>
+			</c:choose>
 		</c:otherwise>
 	</c:choose>
 
 	</section>
 	<hr/>
-<a href="${pageContext.request.contextPath}/user/finalize"><input type="button" value="Finalize" /></a>
+	
+<%-- <a href="${pageContext.request.contextPath}/user/finalize"><input type="button" value="Finalize" /></a> --%>
 </body>
 </html>
